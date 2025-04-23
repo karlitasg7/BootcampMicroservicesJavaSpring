@@ -4,18 +4,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.Objects;
 
 @Entity
 public class Users {
 
+    @Schema(description = "User ID", example = "0")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Schema(description = "User Name", example = "User Name")
     private String name;
 
+    @Schema(description = "User email", example = "user@example.com")
     private String email;
 
     public Users() {

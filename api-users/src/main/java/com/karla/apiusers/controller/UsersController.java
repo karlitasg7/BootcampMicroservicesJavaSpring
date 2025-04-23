@@ -3,6 +3,9 @@ package com.karla.apiusers.controller;
 import com.karla.apiusers.exceptions.UserAlreadyExistsException;
 import com.karla.apiusers.model.Users;
 import com.karla.apiusers.repository.UsersRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,12 +27,25 @@ public class UsersController {
         this.usersRepository = usersRepository;
     }
 
+    @Operation(summary = "Get users", description = "Get the list of all users")
+    @ApiResponses(
+        value = {
+            @ApiResponse(responseCode = "200", description = "Response with users list")
+        }
+    )
     @GetMapping
     public ResponseEntity<List<Users>> getAll() {
         List<Users> users = usersRepository.findAll();
         return ResponseEntity.ok(users);
     }
 
+    @Operation(summary = "Get single user", description = "Get user info by Id")
+    @ApiResponses(
+        value = {
+            @ApiResponse(responseCode = "200", description = "Response with user info"),
+            @ApiResponse(responseCode = "404", description = "User not found")
+        }
+    )
     @GetMapping("{id}")
     public ResponseEntity<Users> getById(@PathVariable Long id) {
         return usersRepository.findById(id)
@@ -37,6 +53,13 @@ public class UsersController {
             .orElse(ResponseEntity.notFound().build());
     }
 
+    @Operation(summary = "Create user", description = "Create new user if not exists other with the same email")
+    @ApiResponses(
+        value = {
+            @ApiResponse(responseCode = "200", description = "Response with new user created"),
+            @ApiResponse(responseCode = "409", description = "User already exists")
+        }
+    )
     @PostMapping
     public ResponseEntity<Users> create(@RequestBody Users user) {
 
@@ -52,6 +75,14 @@ public class UsersController {
             .body(savedUser);
     }
 
+    @Operation(summary = "Update user", description = "User with new information")
+    @ApiResponses(
+        value = {
+            @ApiResponse(responseCode = "200", description = "Response with new user info"),
+            @ApiResponse(responseCode = "409", description = "Other user exists with the same email"),
+            @ApiResponse(responseCode = "404", description = "User not found")
+        }
+    )
     @PutMapping("{id}")
     public ResponseEntity<Users> update(@PathVariable Long id, @RequestBody Users user) {
 
@@ -70,6 +101,13 @@ public class UsersController {
             .orElse(ResponseEntity.notFound().build());
     }
 
+    @Operation(summary = "Delete user", description = "Delete user by ID")
+    @ApiResponses(
+        value = {
+            @ApiResponse(responseCode = "200", description = "User deleted"),
+            @ApiResponse(responseCode = "404", description = "User not found")
+        }
+    )
     @DeleteMapping("{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         Optional<Users> existingUser = usersRepository.findById(id);
