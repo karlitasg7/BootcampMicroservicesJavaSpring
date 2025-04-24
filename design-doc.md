@@ -27,8 +27,6 @@ The system is built as part of a bootcamp final project and is intended to demon
 
 ## Detailed Design
 
-Include diagrams or pseudo-code if necessary.
-If actual code helps to understand the solution, include it.
 
 ### Proposed Solution
 
