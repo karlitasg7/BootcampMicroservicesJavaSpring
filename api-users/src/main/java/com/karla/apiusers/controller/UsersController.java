@@ -13,12 +13,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
-@RestController("/api/users")
+@RestController
+@RequestMapping("/api/users")
 public class UsersController {
 
     private final UsersRepository usersRepository;
@@ -61,7 +65,7 @@ public class UsersController {
         }
     )
     @PostMapping
-    public ResponseEntity<Users> create(@RequestBody Users user) {
+    public ResponseEntity<Users> create(@RequestBody Users user, UriComponentsBuilder uriComponentsBuilder) {
 
         Optional<Users> exist = usersRepository.findByEmail(user.getEmail());
 
@@ -70,9 +74,13 @@ public class UsersController {
         }
 
         Users savedUser = usersRepository.save(new Users(user.getName(), user.getEmail()));
-        return ResponseEntity
-            .status(201)
-            .body(savedUser);
+
+        URI uriNewUser = uriComponentsBuilder
+            .path("/api/users/{id}")
+            .buildAndExpand(savedUser.getId())
+            .toUri();
+
+        return ResponseEntity.created(uriNewUser).build();
     }
 
     @Operation(summary = "Update user", description = "User with new information")
