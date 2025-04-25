@@ -32,9 +32,9 @@ The system is built as part of a bootcamp final project and is intended to demon
 
 The system will be divided into two microservices:
 
-- **User Service**: Handles CRUD operations for users. Each users has basic attributes such as ID, name, and email.
+- **User Service**: Handles CRUD operations for users. Each user has basic attributes such as ID, name, and email.
 
-- **Book Service**: Handles CRUD operations for books. Each book has attributes like ID, title, author, and a status indicating whether it is available or currently borrowed. If borrowed, the book record will include the ID of the users who borrowed it.
+- **Book Service**: Handles operations for get all books, lend books, and return books. Each book has attributes like ID, title, author, and a status indicating whether it is available or currently borrowed. If borrowed, the book record will include the ID of the users who borrowed it.
 
 The services will communicate via REST API. For example, when a book is lent, the Book Service will validate the users by calling the User Service.
 
