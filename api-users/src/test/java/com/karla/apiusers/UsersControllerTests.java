@@ -40,8 +40,8 @@ public class UsersControllerTests {
         JSONArray ids = documentContext.read("$..id");
         assertThat(ids).containsExactlyInAnyOrder(1, 2, 3);
 
-        JSONArray nombres = documentContext.read("$..name");
-        assertThat(nombres).containsExactlyInAnyOrder("karla", "user2", "user3");
+        JSONArray names = documentContext.read("$..name");
+        assertThat(names).containsExactlyInAnyOrder("karla", "user2", "user3");
     }
 
     /**
