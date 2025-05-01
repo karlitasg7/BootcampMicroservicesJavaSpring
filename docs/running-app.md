@@ -99,5 +99,5 @@
 
 6. Run the application with docker-compose:
    ```bash
-    docker-compose up --build
+    docker-compose up
    ```
