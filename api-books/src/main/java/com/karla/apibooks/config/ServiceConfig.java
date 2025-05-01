@@ -7,14 +7,20 @@ import org.springframework.web.client.RestClient;
 import org.springframework.web.client.support.RestClientAdapter;
 import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 
+import java.util.Optional;
+
 @Configuration
 public class ServiceConfig {
 
     @Bean
-    public UsersService miApiClient() {
+    public UsersService usersService() {
+
+        String usersApiUrl = Optional.ofNullable(System.getenv("USERS_API_URL"))
+            .filter(s -> !s.isBlank())
+            .orElse("http://localhost:8080");
 
         RestClient restClient = RestClient.builder()
-            .baseUrl("http://localhost:8080")
+            .baseUrl(usersApiUrl)
             .build();
 
         HttpServiceProxyFactory factory = HttpServiceProxyFactory

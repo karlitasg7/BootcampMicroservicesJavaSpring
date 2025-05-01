@@ -1,0 +1,20 @@
+services:
+  api-users:
+    image: api-users:latest
+    container_name: api-users
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+  api-books:
+    image: api-books:latest
+    container_name: api-books
+    ports:
+      - "8081:8081"
+    networks:
+      - app-network
+    environment:
+      - USERS_API_URL=http://api-users:8080
+networks:
+  app-network:
+    driver: bridge
