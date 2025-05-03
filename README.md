@@ -14,6 +14,7 @@ ___
 | [api-books](./api-books) | Contains the Book Management Service, responsible for managing books.            |
 | [api-users](./api-users) | Contains the User Management Service, responsible for managing users.            |
 | [docs](./docs)           | Contains documentation files, including API specifications and design documents. |
+| [docker](./docker)       | Contains the docker compose file using the images from docker Hub                |
 | `docker-compose.yml`     | Docker Compose file to run both services together.                               |
 | `README.md`              | This file, providing an overview of the project.                                 |
 
@@ -44,3 +45,8 @@ ___
 ## [Endpoints](docs/endpoints.md)
 
 ## [API Swagger Documentation](docs/swagger)
+
+## You can use the images from docker hub, visit the next links:
+
+- [api-users](https://hub.docker.com/r/karlitasg7/api-users)
+- [api-books](https://hub.docker.com/r/karlitasg7/api-books)

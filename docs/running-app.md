@@ -101,3 +101,10 @@
    ```bash
     docker-compose up
    ```
+## Run with docker-compose with images from docker Hub
+
+1. Run the application with docker-compose:
+   ```bash
+    cd docker    
+    docker-compose up
+   ```
