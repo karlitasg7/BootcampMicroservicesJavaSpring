@@ -46,6 +46,8 @@ ___
 
 ## [API Swagger Documentation](docs/swagger)
 
+## [Postman Collection](docs/Postman_Collection.json)
+
 ## You can use the images from docker hub, visit the next links:
 
 - [api-users](https://hub.docker.com/r/karlitasg7/api-users)
