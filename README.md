@@ -44,7 +44,7 @@ ___
 
 ## [Endpoints](docs/endpoints.md)
 
-## [API Swagger Documentation](docs/swagger)
+## [API Swagger Documentation](docs/swagger.md)
 
 ## [Postman Collection](docs/Postman_Collection.json)
 
@@ -52,3 +52,8 @@ ___
 
 - [api-users](https://hub.docker.com/r/karlitasg7/api-users)
 - [api-books](https://hub.docker.com/r/karlitasg7/api-books)
+
+## You can test the APIs from Azure, using the following links:
+
+- [api-users](https://ks-bootcamp-javaspring-api-users.azurewebsites.net/swagger-ui/index.html)
+- [api-books](https://ks-bootcamp-javaspring-api-books.azurewebsites.net/swagger-ui/index.html)

@@ -846,12 +846,12 @@
 	"variable": [
 		{
 			"key": "baseUrlBooks",
-			"value": "http://localhost:8081",
+			"value": "https://ks-bootcamp-javaspring-api-books.azurewebsites.net",
 			"type": "string"
 		},
 		{
 			"key": "baseUrlUsers",
-			"value": "http://localhost:8080",
+			"value": "https://ks-bootcamp-javaspring-api-users.azurewebsites.net",
 			"type": "string"
 		}
 	]
